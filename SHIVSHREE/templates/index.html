@@ -1,0 +1,185 @@
+﻿{% extends "base.html" %}
+{% block page_title_key %}home_page{% endblock %}
+{% block title %}Home | {{ site.business_name }}{% endblock %}
+
+{% block content %}
+<section class="hero premium-hero">
+    <div class="hero-backdrop"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
+    <div class="hero-orb orb-three"></div>
+    <div class="container hero-grid">
+        <div class="hero-copy hero-glass fade-in slide-left">
+            <span class="eyebrow" data-key="hero_eyebrow">Professional Printing & Branding</span>
+            <h1 data-key="hero_title">Shivshri Advertising</h1>
+            <p data-key="tagline">{{ site.tagline }}</p>
+            <div class="hero-actions">
+                <a class="button button-primary button-call" href="tel:{{ site.phone_link }}" data-key="call_now">Call Now</a>
+                <a class="button button-secondary button-whatsapp bounce-soft" href="{{ site.whatsapp_link }}" target="_blank" rel="noreferrer" data-key="whatsapp">WhatsApp</a>
+            </div>
+            <p class="hero-intro" data-key="intro">We provide fast and high-quality printing solutions for banners, boards, and branding materials.</p>
+        </div>
+        <div class="hero-card premium-mockup fade-in slide-right floating">
+            <div class="hero-image-glow"></div>
+            <img src="{{ url_for('static', filename='images/hero-printing.png') }}" alt="Printing showcase">
+        </div>
+    </div>
+</section>
+
+<section class="section info-section">
+    <div class="container">
+        <div class="info-grid">
+            <article class="info-card reveal">
+                <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                <span class="info-label" data-key="working_hours_label_short">Business Hours</span>
+                <strong data-key="working_hours">Working Hours: 10 AM - 10 PM</strong>
+            </article>
+            <article class="info-card reveal delay-1">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <span class="info-label" data-key="address_label_short">Location</span>
+                <strong data-key="address">Alandi Devachi, 412105</strong>
+            </article>
+        </div>
+
+        <div class="highlights-panel reveal">
+            <div class="section-heading compact-heading">
+                <span class="eyebrow" data-key="highlights_title">Highlights</span>
+                <h2 data-key="highlights_heading">Professional output with quick support and clean execution</h2>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <p data-key="highlight1">Fast turnaround for banners, boards, and branding materials</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <p data-key="highlight2">Clean design support for both print and digital campaigns</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <p data-key="highlight3">Reliable service for local businesses, shops, and events</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-muted">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow" data-key="about_us">About Us</span>
+            <h2 data-key="about_heading">Printing support that helps local businesses look established</h2>
+            <p data-key="about_copy">Shivshri Advertising delivers dependable print quality, smart layouts, and professional branding support for shops, events, and growing businesses in and around Alandi Devachi.</p>
+        </div>
+        <div class="intro-banner reveal">
+            <div>
+                <span class="eyebrow" data-key="trusted_team">Trusted Local Team</span>
+                <h3><span data-key="footer_owned">Owned by</span> {{ site.owners }}</h3>
+                <p data-key="trusted_copy">From flex printing to backlight boards, we focus on fast service, clean finishing, and practical design that works in the real world.</p>
+            </div>
+            <a class="button button-primary" href="{{ url_for('contact') }}" data-key="contact">Contact</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container split-layout">
+        <div class="split-copy reveal">
+            <span class="eyebrow" data-key="services">Our Services</span>
+            <h2 data-key="featured_heading">Solutions built for visibility and trust</h2>
+            <p data-key="featured_copy">From eye-catching flex printing to digital creatives, every service is designed to present your business more professionally.</p>
+            <a class="button button-primary" href="{{ url_for('services') }}" data-key="services">Our Services</a>
+        </div>
+        <div class="stats-grid reveal delay-1">
+            <div class="stat-card">
+                <strong data-key="stat_fast">Fast</strong>
+                <span data-key="working_hours_support">Working hours for convenient customer support</span>
+            </div>
+            <div class="stat-card">
+                <strong data-key="stat_clean">Clean</strong>
+                <span data-key="services_copy">Explore the core services that help customers discover, recognize, and trust your brand offline and online.</span>
+            </div>
+            <div class="stat-card">
+                <strong data-key="stat_reliable">Reliable</strong>
+                <span data-key="reviews_subheading">Trusted by growing local businesses</span>
+            </div>
+            <div class="stat-card">
+                <strong data-key="stat_hours">10-10</strong>
+                <span data-key="working_hours">Working Hours: 10 AM - 10 PM</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="card-grid services-preview">
+            {% for service in site.services[:3] %}
+            <article class="service-card reveal">
+                <div class="service-icon"><i class="{{ service.icon }}"></i></div>
+                <h3 data-key="service_{{ loop.index0 }}_title">{{ service.title }}</h3>
+                <p data-key="service_{{ loop.index0 }}_desc">{{ service.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section" id="reviews">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow" data-key="reviews">Customer Reviews</span>
+            <h2 data-key="reviews_subheading">Trusted by growing local businesses</h2>
+        </div>
+        <div class="card-grid testimonial-grid">
+            {% for review in site.testimonials %}
+            <article class="testimonial-card reveal">
+                <div class="stars" aria-label="{{ review.rating }} star review">
+                    {% for _ in range(review.rating) %}
+                    <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p data-key="review_{{ loop.index0 }}">"{{ review.text }}"</p>
+                <h3 data-key="reviewer_{{ loop.index0 }}">{{ review.name }}</h3>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-muted">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow" data-key="instagram_title">Instagram</span>
+            <h2 data-key="instagram_heading">Creative work you can keep updating</h2>
+            <p data-key="instagram_copy">Use these blocks for your latest banner designs, flex prints, completed signage work, or customer project highlights.</p>
+        </div>
+        <div class="instagram-grid">
+            {% for post in site.instagram_posts %}
+            <div class="instagram-card reveal">
+                <img src="{{ url_for('static', filename=post) }}" alt="Instagram preview">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="centered-action reveal instagram-action">
+            <a class="button button-instagram" href="{{ site.instagram_link }}" target="_blank" rel="noreferrer" data-key="instagram_button">Follow on Instagram</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="location">
+    <div class="container split-layout">
+        <div class="split-copy reveal">
+            <span class="eyebrow" data-key="location_title">Location</span>
+            <h2 data-key="location_heading">Visit Shivshri Advertising in Alandi Devachi</h2>
+            <p data-key="address">Alandi Devachi, 412105</p>
+            <p data-key="location_copy">Call us during business hours or stop by to discuss flex printing, banners, vinyl work, and branding materials.</p>
+            <a class="button button-primary" href="{{ site.directions_link }}" target="_blank" rel="noreferrer" data-key="get_directions">Get Directions</a>
+        </div>
+        <div class="map-card reveal delay-1">
+            <iframe title="Shivshri Advertising location" src="{{ site.google_maps_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+{% endblock %}

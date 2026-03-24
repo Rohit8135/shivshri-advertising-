@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+{% block page_title_key %}services_page{% endblock %}
+{% block title %}Services | {{ site.business_name }}{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container reveal">
+        <span class="eyebrow" data-key="services">Our Services</span>
+        <h1 data-key="services_heading">Premium printing and advertising services for local business growth</h1>
+        <p data-key="services_copy">Explore the core services that help customers discover, recognize, and trust your brand offline and online.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="card-grid">
+            {% for service in site.services %}
+            <article class="service-card reveal">
+                <div class="service-icon"><i class="{{ service.icon }}"></i></div>
+                <h2 data-key="service_{{ loop.index0 }}_title">{{ service.title }}</h2>
+                <p data-key="service_{{ loop.index0 }}_desc">{{ service.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

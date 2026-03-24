@@ -1,0 +1,105 @@
+﻿{% extends "base.html" %}
+{% block page_title_key %}contact_page{% endblock %}
+{% block title %}Contact | {{ site.business_name }}{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container reveal">
+        <span class="eyebrow" data-key="contact_title">Contact Us</span>
+        <h1 data-key="contact_heading">Let's discuss your next print or advertising requirement</h1>
+        <p data-key="contact_copy">Share your details and we will get back to you with the right print, design, or signage solution.</p>
+    </div>
+</section>
+
+<section class="section contact-section contact-vertical-section">
+    <div class="container contact-vertical-shell">
+        <div class="contact-overview reveal">
+            <div class="contact-panel-head contact-panel-head-balanced contact-centered-head">
+                <h2 data-key="contact_title">Contact Us</h2>
+                <p data-key="contact_copy">Share your details and we will get back to you with the right print, design, or signage solution.</p>
+            </div>
+
+            <div class="contact-card-grid contact-card-grid-vertical">
+                <article class="contact-detail-card owner-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="contact-detail-body">
+                        <span class="contact-detail-label" data-key="owners_label">Owners:</span>
+                        <strong class="owner-list">{{ site.owners }}</strong>
+                    </div>
+                </article>
+
+                {% for phone in site.phone_numbers %}
+                <article class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div class="contact-detail-body">
+                        <span class="contact-detail-label" data-key="phone_label_{{ loop.index }}">Phone {{ loop.index }}:</span>
+                        <strong><a href="tel:{{ phone.link }}">{{ phone.display }}</a></strong>
+                    </div>
+                </article>
+                {% endfor %}
+
+                <article class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-detail-body">
+                        <span class="contact-detail-label" data-key="email_label">Email:</span>
+                        <strong><a href="mailto:{{ site.email }}">{{ site.email }}</a></strong>
+                    </div>
+                </article>
+
+                <article class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-regular fa-clock"></i></div>
+                    <div class="contact-detail-body">
+                        <span class="contact-detail-label" data-key="working_hours_label">Working Hours:</span>
+                        <strong data-key="working_hours_only">10 AM - 10 PM</strong>
+                    </div>
+                </article>
+
+                <article class="contact-detail-card">
+                    <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="contact-detail-body">
+                        <span class="contact-detail-label" data-key="address_label">Address:</span>
+                        <strong data-key="address">Alandi Devachi, 412105</strong>
+                    </div>
+                </article>
+            </div>
+
+            <div class="contact-quick-actions contact-quick-actions-centered reveal delay-1">
+                <a class="button button-primary" href="{{ site.whatsapp_link }}" target="_blank" rel="noreferrer" data-key="start_chat">Start Chat</a>
+                <a class="button button-secondary" href="{{ site.directions_link }}" target="_blank" rel="noreferrer" data-key="get_directions">Get Directions</a>
+            </div>
+
+            <div class="map-card contact-map-card contact-map-card-wide reveal delay-1">
+                <iframe title="Shivshri Advertising map" src="{{ site.google_maps_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <form class="contact-form contact-form-centered reveal" id="contactForm">
+            <div class="contact-panel-head contact-centered-head">
+                <h2 data-key="contact_title">Contact Us</h2>
+                <p data-key="intro">We provide fast and high-quality printing solutions for banners, boards, and branding materials.</p>
+            </div>
+
+            <div class="form-field">
+                <label for="name" data-key="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" data-placeholder="name_placeholder" required>
+            </div>
+
+            <div class="form-field">
+                <label for="phone" data-key="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="Your phone number" data-placeholder="phone_placeholder" required>
+            </div>
+
+            <div class="form-field">
+                <label for="message" data-key="message">Message</label>
+                <textarea id="message" name="message" rows="7" placeholder="Tell us what you need" data-placeholder="message_placeholder" required></textarea>
+            </div>
+
+            <div class="contact-form-footer contact-form-footer-centered">
+                <button class="button button-primary" type="submit" data-key="send">Send</button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

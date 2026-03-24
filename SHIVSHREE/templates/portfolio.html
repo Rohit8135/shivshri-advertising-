@@ -1,0 +1,36 @@
+﻿{% extends "base.html" %}
+{% block page_title_key %}portfolio_page{% endblock %}
+{% block title %}Portfolio | {{ site.business_name }}{% endblock %}
+
+{% block content %}
+<section class="page-banner">
+    <div class="container reveal">
+        <span class="eyebrow" data-key="portfolio">Portfolio</span>
+        <h1 data-key="portfolio_heading">Recent print, signage, and branding presentation samples</h1>
+        <p data-key="portfolio_copy">Browse the sample gallery below and replace any image later with your actual customer work from static/images.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="filter-row reveal">
+            <button class="filter-button active" data-filter="all" type="button" data-key="filter_all">All</button>
+            <button class="filter-button" data-filter="flex" type="button" data-key="filter_flex">Flex</button>
+            <button class="filter-button" data-filter="banner" type="button" data-key="filter_banner">Banner</button>
+            <button class="filter-button" data-filter="vinyl" type="button" data-key="filter_vinyl">Vinyl</button>
+            <button class="filter-button" data-filter="board" type="button" data-key="filter_boards">Boards</button>
+            <button class="filter-button" data-filter="social" type="button" data-key="filter_social">Social</button>
+        </div>
+        <div class="portfolio-grid">
+            {% for item in site.portfolio_items %}
+            <article class="portfolio-card reveal" data-category="{{ item.category }}">
+                <button class="portfolio-trigger" type="button" data-image="{{ url_for('static', filename=item.image) }}" data-title-key="portfolio_item_{{ loop.index0 }}" data-title="{{ item.title }}">
+                    <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.title }}">
+                    <span data-key="portfolio_item_{{ loop.index0 }}">{{ item.title }}</span>
+                </button>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
